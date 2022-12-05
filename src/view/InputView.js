@@ -9,7 +9,9 @@ const InputView = {
   },
 
   readWinningNumber() {
-    Console.readLine('당첨 번호를 입력해 주세요.', (input) => {});
+    Console.readLine('당첨 번호를 입력해 주세요.', (input) => {
+      Validator.validateWinningNumber(input);
+    });
   },
 };
 
