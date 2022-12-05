@@ -13,6 +13,10 @@ const InputView = {
       Validator.validateWinningNumber(input);
     });
   },
+
+  readBonusNumber() {
+    Console.readLine('보너스 번호를 입력해 주세요.', (input) => {});
+  },
 };
 
 module.exports = InputView;
