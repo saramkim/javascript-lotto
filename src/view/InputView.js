@@ -15,7 +15,9 @@ const InputView = {
   },
 
   readBonusNumber() {
-    Console.readLine('보너스 번호를 입력해 주세요.', (input) => {});
+    Console.readLine('보너스 번호를 입력해 주세요.', (input) => {
+      Validator.validateBonusNumber(input);
+    });
   },
 };
 

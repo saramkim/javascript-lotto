@@ -30,6 +30,17 @@ const Validator = {
         );
     });
   },
+
+  validateBonusNumber(input, winnigNumber) {
+    if (isNaN(input))
+      throw new Error('[ERROR] 보너스 번호는 숫자 1개를 입력해야 합니다.');
+    if (winnigNumber.includes(input))
+      throw new Error(
+        '[ERROR] 보너스 번호는 당첨 번호와 다른 숫자를 입력해야 합니다.'
+      );
+    if (input < Validator.MIN_NUMBER || input > Validator.MAX_NUMBER)
+      throw new Error('[ERROR] 보너스 번호는 1~45 범위를 입력해야 합니다.');
+  },
 };
 
 module.exports = Validator;
