@@ -11,7 +11,7 @@ const LottoMaker = {
       if (!lottoNumber.includes(randomNumber)) lottoNumber.push(randomNumber);
     }
 
-    new Lotto(lottoNumber);
+    return new Lotto(lottoNumber);
   },
 };
 
