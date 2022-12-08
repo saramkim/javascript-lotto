@@ -1,3 +1,4 @@
+const Calculator = require('./Calculator');
 const LottoMaker = require('./LottoMaker');
 const RandomNumberGenerator = require('./utils/RandomNumberGenerator');
 const InputView = require('./view/InputView');
@@ -24,9 +25,21 @@ class App {
   }
 
   record(input) {
-    const winningNumber = input.split(',');
+    const winningNumber = input.split(',').map((number) => Number(number));
 
-    InputView.readBonusNumber(this);
+    InputView.readBonusNumber(this, winningNumber);
+  }
+
+  calculate(winningNumber, bonusNumber) {
+    const calculator = new Calculator();
+    const result = [];
+
+    this.#lottoList.forEach((lotto) => {
+      const ranking = calculator.rank(lotto, winningNumber, bonusNumber);
+      if (ranking) result.push(ranking);
+    });
+
+    OutputView.printWinningHistory(result);
   }
 }
 

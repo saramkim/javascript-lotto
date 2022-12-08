@@ -12,13 +12,14 @@ const InputView = {
   readWinningNumber(game) {
     Console.readLine('당첨 번호를 입력해 주세요.', (input) => {
       Validator.validateWinningNumber(input);
-      game.record(input)
+      game.record(input);
     });
   },
 
-  readBonusNumber(game) {
+  readBonusNumber(game, winningNumber) {
     Console.readLine('보너스 번호를 입력해 주세요.', (input) => {
-      Validator.validateBonusNumber(input);
+      Validator.validateBonusNumber(input, winningNumber);
+      game.calculate(winningNumber, input);
     });
   },
 };
