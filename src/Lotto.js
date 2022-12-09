@@ -14,6 +14,8 @@ class Lotto {
       if (number < 1 || number > 45)
         throw new Error('[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.');
     });
+    if ([...new Set(numbers)].length !== numbers.length)
+      throw new Error('[ERROR] 로또 번호는 중복되지 않는 숫자여야 합니다.');
   }
 
   getNumber() {

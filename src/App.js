@@ -1,5 +1,5 @@
 const Calculator = require('./Calculator');
-const LottoMaker = require('./LottoMaker');
+const Lotto = require('./Lotto');
 const RandomNumberGenerator = require('./utils/RandomNumberGenerator');
 const InputView = require('./view/InputView');
 const OutputView = require('./view/OutputView');
@@ -15,13 +15,19 @@ class App {
     const count = amount / 1000;
     OutputView.printPurchaseCount(count);
 
-    for (let i = 0; i < count; i++) {
-      const lotto = LottoMaker.makeLotto(RandomNumberGenerator.generate);
-      this.#lottoList.push(lotto);
-      OutputView.printLottoNumber(lotto.getNumber());
-    }
+    this.makeLotto(count);
 
     InputView.readWinningNumber(this);
+  }
+
+  makeLotto(count) {
+    for (let i = 0; i < count; i++) {
+      const lottoNumber = RandomNumberGenerator.generate();
+      const lotto = new Lotto(lottoNumber);
+      this.#lottoList.push(lotto);
+
+      OutputView.printLottoNumber(lotto.getNumber());
+    }
   }
 
   record(input) {
@@ -44,7 +50,5 @@ class App {
     OutputView.printReturnRate(totalPrizeMoney, this.#lottoList.length);
   }
 }
-
-new App().play();
 
 module.exports = App;
