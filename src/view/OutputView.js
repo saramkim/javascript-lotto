@@ -14,14 +14,23 @@ const OutputView = {
   },
 
   printLottoNumber(LottoNumber) {
-    Console.print(LottoNumber);
+    Console.print(`[${LottoNumber.sort((a, b) => a - b).join(', ')}]`);
   },
 
   printWinningHistory(result) {
+    Console.print('당첨 통계');
+    Console.print('---');
     Object.keys(this.RESULT_PHRASE).forEach((ranking) => {
       const count = result.filter((v) => v === ranking).length;
       Console.print(this.RESULT_PHRASE[ranking](count));
     });
+  },
+
+  printReturnRate(totalPrizeMoney, lottoAmount) {
+    const ReturnRate = ((totalPrizeMoney / (lottoAmount * 1000)) * 100).toFixed(
+      1
+    );
+    Console.print(`총 수익률은 ${ReturnRate}%입니다.`);
   },
 };
 

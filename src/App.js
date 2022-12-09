@@ -31,15 +31,17 @@ class App {
   }
 
   calculate(winningNumber, bonusNumber) {
-    const calculator = new Calculator();
     const result = [];
-
+    let totalPrizeMoney = 0;
     this.#lottoList.forEach((lotto) => {
-      const ranking = calculator.rank(lotto, winningNumber, bonusNumber);
-      if (ranking) result.push(ranking);
+      const ranking = Calculator.rank(lotto, winningNumber, bonusNumber);
+      if (ranking) {
+        result.push(ranking);
+        totalPrizeMoney += Calculator.calculatePrizeMoney(ranking);
+      }
     });
-
     OutputView.printWinningHistory(result);
+    OutputView.printReturnRate(totalPrizeMoney, this.#lottoList.length);
   }
 }
 
