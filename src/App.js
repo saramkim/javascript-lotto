@@ -1,4 +1,4 @@
-const Calculator = require('./Calculator');
+const Calculator = require('./utils/Calculator');
 const Lotto = require('./Lotto');
 const RandomNumberGenerator = require('./utils/RandomNumberGenerator');
 const InputView = require('./view/InputView');
